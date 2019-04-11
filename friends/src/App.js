@@ -16,7 +16,6 @@ class App extends Component {
               <Link to="/login">Login</Link>
             </li>
           </ul>
-          <h1>Hello Router World</h1>
           <Route path="/login" component={Login} />
         </div>
       </Router>
