@@ -1,28 +1,67 @@
-import { LOGGING_IN } from "../actions/login";
+import {
+  LOGGING_IN,
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  FETCH_FRIENDS,
+  FETCH_SUCCESS,
+  FETCH_FAILURE
+} from "../actions";
 
-// Start with a pretty simple initialState object that has a friends property set as an empty array. Your state tree will grow pretty large as you build out more and more actions.
-//Your initial state could (but doesn't have to) look something like this:
 const initialState = {
-  deletingFriend: false,
   fetchingFriends: false,
   friends: [],
   loggingIn: false,
-  savingFriends: false,
-  updatingFriend: false,
-  error: ""
+  error: null
 };
 
-const reducer = (state = initialState, action) => {
-  console.log(action);
+const rootReducer = (state = initialState, action) => {
   switch (action.type) {
     case LOGGING_IN:
       return {
         ...state,
         error: "",
-        loggingIn: true,
+        loggingIn: true
+      };
+
+    case LOGIN_SUCCESS:
+      return {
+        ...state,
+        error: "",
+        loggingIn: false
+      };
+
+    case LOGIN_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
+        loggingIn: false
+      };
+
+    case FETCH_FRIENDS:
+      return {
+        ...state,
+        error: "",
+        fetchingFriends: true
+      };
+
+    case FETCH_SUCCESS:
+      return {
+        ...state,
+        error: "",
+        fetchingFriends: false,
+        friends: action.payload
+      };
+
+    case FETCH_FAILURE:
+      return {
+        ...state,
+        error: action.payload,
         fetchingFriends: false
       };
+
+    default:
+      return state;
   }
 };
 
-export default reducer;
+export default rootReducer;
