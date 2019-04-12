@@ -1,10 +1,10 @@
 import {
-  LOGGING_IN,
+  LOGIN_START,
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
-  FETCH_FRIENDS,
-  FETCH_SUCCESS,
-  FETCH_FAILURE
+  FETCH_FRIENDS_START,
+  FETCH_FRIENDS_SUCCESS,
+  FETCH_FRIENDS_FAILURE
 } from "../actions";
 
 const initialState = {
@@ -16,7 +16,7 @@ const initialState = {
 
 const rootReducer = (state = initialState, action) => {
   switch (action.type) {
-    case LOGGING_IN:
+    case LOGIN_START:
       return {
         ...state,
         error: "",
@@ -37,14 +37,14 @@ const rootReducer = (state = initialState, action) => {
         loggingIn: false
       };
 
-    case FETCH_FRIENDS:
+    case FETCH_FRIENDS_START:
       return {
         ...state,
         error: "",
         fetchingFriends: true
       };
 
-    case FETCH_SUCCESS:
+    case FETCH_FRIENDS_SUCCESS:
       return {
         ...state,
         error: "",
@@ -52,7 +52,7 @@ const rootReducer = (state = initialState, action) => {
         friends: action.payload
       };
 
-    case FETCH_FAILURE:
+    case FETCH_FRIENDS_FAILURE:
       return {
         ...state,
         error: action.payload,
