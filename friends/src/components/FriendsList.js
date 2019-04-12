@@ -3,11 +3,10 @@ import Friends from "./Friends";
 
 class FriendsList extends React.Component {
   render() {
-    console.log(this.props.friends);
     return (
       <div>
-        {this.props.friends.map(friend => {
-          return <Friends friend={friend} />;
+        {this.props.friends.map((friend, id) => {
+          return <Friends friend={friend} key={id} />;
         })}
       </div>
     );

@@ -11,7 +11,7 @@ const initialState = {
   fetchingFriends: false,
   friends: [],
   loggingIn: false,
-  error: null
+  error: ""
 };
 
 const rootReducer = (state = initialState, action) => {
